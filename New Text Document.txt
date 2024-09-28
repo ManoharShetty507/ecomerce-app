@@ -1,0 +1,26 @@
+veio ndkz dqyc psf
+
+<ul id="electronics-list">
+    <li>
+        <img src="https://your-bucket-name.s3.amazonaws.com/static/images/smartphone.jpg" alt="Smartphone" width="100">
+        Smartphone - $299.99
+        <form action="{{ url_for('add_to_cart', item_type='electronics', item_id=1) }}" method="post">
+            <button type="submit" class="add-to-cart-button">Add to Cart</button>
+        </form>
+    </li>
+    <li>
+        <img src="https://your-bucket-name.s3.amazonaws.com/static/images/laptop.jpg" alt="Laptop" width="100">
+        Laptop - $799.99
+        <form action="{{ url_for('add_to_cart', item_type='electronics', item_id=2) }}" method="post">
+            <button type="submit" class="add-to-cart-button">Add to Cart</button>
+        </form>
+    </li>
+    <li>
+        <img src="https://your-bucket-name.s3.amazonaws.com/static/images/tablet.jpg" alt="Tablet" width="100">
+        Tablet - $199.99
+        <form action="{{ url_for('add_to_cart', item_type='electronics', item_id=3) }}" method="post">
+            <button type="submit" class="add-to-cart-button">Add to Cart</button>
+        </form>
+    </li>
+    <!-- Repeat for other items -->
+</ul>

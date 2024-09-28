@@ -1,0 +1,9 @@
+{
+    "users": [
+        {
+            "name": "teyom27358@skrak.com",
+            "password": "scrypt:32768:8:1$RaE8VjGLQrdOccB5$da356498c2417d9400c1f809686259764bfa407f0f5a2a601cfdd921a3f400c67e79d518811b38c05b3b4d00cf3883b3823630058dc8d5c3964766e3663294c9",
+            "username": "teyom27358@skrak.com"
+        }
+    ]
+}
