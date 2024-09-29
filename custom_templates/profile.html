@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <h1>User Profile</h1>
+        <a href="{{ url_for('home') }}" class="home-button">Home</a>
         <p><strong>Username:</strong> {{ user.username }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
         <p><strong>Phone Number:</strong> {{ user.phone }}</p>
