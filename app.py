@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask import Flask, render_template, request, redirect, url_for, session, make_response
 app = Flask(__name__, template_folder='custom_templates')
 import random 
-
 import os
 app.secret_key = 'your_secret_key'
 from flask_mail import Mail, Message
@@ -19,34 +18,34 @@ users_file = 'users.json'
 from pymongo import MongoClient
 from urllib.parse import quote_plus
 import requests
+import logging
+from logging.handlers import RotatingFileHandler
+log_file = 'app.log'  # Name of the log file
+handler = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=3)  # 5MB log size, keep up to 3 backups
+handler.setLevel(logging.INFO)  # Set the logging level
+
+# Log format
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+# Add the file handler to Flask's logger
+app.logger.addHandler(handler)
+from db import users_collection
+
+# Example log messages
+app.logger.info("Application started")  # This will be saved in app.log
+app.logger.debug("Debugging info")
+app.logger.warning("Warning message")
+app.logger.error("Error occurred")
+
+@app.route('/example')
+def example():
+    app.logger.info("Visited the example route")
+    return "Check the log file for this message!"
 
 # Route for the home page
 # config.py or app.py
-username = 'admin123'  # Your MongoDB username
-password = 'admin123'  # Replace with your actual password
 
-# URL encode the password to handle special characters
-password_encoded = quote_plus(password)
-
-# Use the encoded password in the connection string
-client = MongoClient(f"mongodb+srv://{username}:{password_encoded}@cluster0.yfy4u.mongodb.net/myDatabaseName?retryWrites=true&w=majority&appName=Cluster0")
-# If using Flask, this would be your MONGO_URI configuration
-app.config["MONGO_URI"] = f"mongodb+srv://{username}:{password_encoded}@cluster0.yfy4u.mongodb.net/myDatabaseName?retryWrites=true&w=majority&appName=Cluster0"
-
-db = client['myDatabaseName']
-try:
-    client.admin.command('ping')
-    print("MongoDB connection successful!")
-except Exception as e:
-    print(f"Error while connecting to MongoDB: {e}")
-
-@app.route('/check_mongo')
-def check_mongo_connection():
-    # Additional logic for checking MongoDB connection can go here
-    return "MongoDB connection checked!"
-
-mongo = PyMongo(app)
-users_collection = db['users']
 {
   "users": []
 }
