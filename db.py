@@ -29,6 +29,8 @@ client = MongoClient(f"mongodb+srv://{username}:{password_encoded}@cluster0.yfy4
 # If using Flask, this would be your MONGO_URI configuration
 app.config["MONGO_URI"] = f"mongodb+srv://{username}:{password_encoded}@cluster0.yfy4u.mongodb.net/myDatabaseName?retryWrites=true&w=majority&appName=Cluster0"
 
+client = MongoClient('mongodb://admin123:admin123@mongodb:27017/')
+
 db = client['myDatabaseName']
 try:
     client.admin.command('ping')
