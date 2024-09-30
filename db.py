@@ -31,6 +31,10 @@ app.config["MONGO_URI"] = f"mongodb+srv://{username}:{password_encoded}@cluster0
 
 client = MongoClient('mongodb://admin123:admin123@mongodb:27017/')
 
+client = MongoClient(f"mongodb://{username}:{password_encoded}@mongodb-service:27017/myDatabaseName")
+app.config["MONGO_URI"] = f"mongodb://{username}:{password_encoded}@mongodb-service:27017/myDatabaseName"
+client = MongoClient('mongodb://admin123:admin123@mongodb:27017/')
+
 db = client['myDatabaseName']
 try:
     client.admin.command('ping')
