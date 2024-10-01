@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flaskapp
-          image: manoharshetty507/ecommerce:v3
+          image: manoharshetty507/flask:latest
           ports:
             - containerPort: 5000
           env:
