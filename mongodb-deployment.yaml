@@ -34,6 +34,18 @@ spec:
             claimName: mongodb-pvc
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data/mongodb
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mongodb-pvc
@@ -43,6 +55,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
 
 ---
 # mongodb-service.yaml
