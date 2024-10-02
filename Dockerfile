@@ -39,4 +39,5 @@ ENV FLASK_ENV=production
 EXPOSE 5000
 
 # Command to run the Flask application
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+#CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:5000", "app:app"]
